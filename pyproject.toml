@@ -1,0 +1,26 @@
+[project]
+name = "Team_ML_10"
+version = "1.0.0"
+description = "Bank Marketing E-23 Compliance Analysis"
+authors = [{name = "Team_ML_10"}]
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas",
+    "numpy",
+    "matplotlib",
+    "scikit-learn",
+    "xgboost",
+    "shap",
+    "ipywidgets",
+    "ipykernel",
+    "jupyter",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+# Tell setuptools not to look for packages (just run scripts)
+[tool.setuptools]
+packages = []
