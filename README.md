@@ -42,6 +42,8 @@ Four‑layer system to create a profit‑driven system:
 
 **Our constraint: Delete duration.** Delete any feature created during or after the campaign. Build from pre‑campaign information only. This sacrifices training accuracy for deployment reliability.  
 
+
+
 ### STAKEHOLDER VALUE
 
 #### Chief Distribution Officer  
