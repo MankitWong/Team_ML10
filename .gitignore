@@ -1,0 +1,6 @@
+data/raw/__MACOSX
+.DS_Store
+*.zip
+data/raw/bank-additional/.Rhistory
+uv.lock
+.python-version
