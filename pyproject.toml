@@ -1,8 +1,4 @@
 [project]
-name = "e23-model-factory"
-version = "1.0.0"
-description = "Bank Marketing E-23 Compliance Analysis"
-authors = [{name = "Sean Brennan"}]
 name = "Team_ML_10"
 version = "1.0.0"
 description = "Bank Marketing E-23 Compliance Analysis"
