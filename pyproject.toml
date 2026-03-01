@@ -15,6 +15,7 @@ dependencies = [
     "ipywidgets",
     "ipykernel",
     "jupyter",
+    "seaborn",
 ]
 
 [build-system]
