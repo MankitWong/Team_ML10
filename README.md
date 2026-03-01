@@ -156,7 +156,7 @@ The analysis of this dataset is subject to several risks and uncertainties:
 - SQL for structured queries if needed  
 - Visualization app for dashboards and interactive charts  
 
-###**HOW WE WILL ANSWER THE BUSINESS QUESTION**
+## **HOW WE WILL ANSWER THE BUSINESS QUESTION**
 
 We will answer "How can we optimize lead-to-revenue conversion while minimizing customer acquisition cost and regulatory risk using only pre-campaign information?" through four phases:
 
