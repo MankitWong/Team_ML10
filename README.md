@@ -106,3 +106,5 @@ The analysis of this dataset is subject to several risks and uncertainties:
 - Markdown for documentation  
 - SQL for structured queries if needed  
 - Visualization app for dashboards and interactive charts  
+## Updated README inside SEan submodule
+
