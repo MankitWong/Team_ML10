@@ -1,5 +1,18 @@
 # Team_ML10
 
+
+
+# ML Project – Team 10
+
+| Section | Description |
+|----------|-------------|
+| **Business Motivation** | Provides the strategic context of the project, including the industry background, problem definition, core business question, and justification for why solving this problem creates measurable value. |
+| **Data** | Introduces the dataset, its origin, structure, and key features. Explains variable categories, target definition, data granularity, and rationale for selecting this dataset for modeling. |
+| **Risk ** | Identifies modeling, data, operational, and ethical risks (e.g., data leakage, bias, overfitting, deployment risk) and outlines mitigation strategies to ensure real-world validity and robustness. |
+| **Methods & Technologies** | Describes the analytical framework, modeling approaches, feature engineering strategy, evaluation metrics, and tools/technologies used (Python, ML libraries, visualization, etc.). |
+| **Implementation Strategy** | Explains the step-by-step analytical plan for answering the business question, including preprocessing, modeling pipeline, validation design, and performance benchmarking. |
+| **Stakeholder Value** | Defines how insights will be translated into actionable recommendations, tailored communication strategies for technical and non-technical stakeholders, and expected business impact. |
+| **Team Roles & Accountability** | Clarifies responsibilities, ownership of deliverables, collaboration workflow, and quality control mechanisms within Team 10. |
 ## BUSINESS MOTIVATION
 
 ### THE PROBLEM
@@ -102,7 +115,7 @@ The analysis of this dataset is subject to several risks and uncertainties:
 5. **Temporal and Economic Bias:**  
    The data was collected from a Portuguese banking institution between 2008 and 2010, a period encompassing two major financial crises: the collapse of Lehman Brothers and the eurozone sovereign debt crisis. This time frame introduces temporal and economic bias, as customer responses to campaigning during this unstable period may differ significantly from those in a normal market.  
 
-## Methods and Technologies
+## METHOD AND TECHNOLOGIES
 
 ### Methods
 - Explore data: client info, finances, past campaigns, and economic factors.  
@@ -122,7 +135,7 @@ The analysis of this dataset is subject to several risks and uncertainties:
 - SQL for structured queries if needed  
 - Visualization app for dashboards and interactive charts  
 
-## **HOW WE WILL ANSWER THE BUSINESS QUESTION**
+## IMPLEMENTATION STRATEGY
 
 We will answer "How can we optimize lead-to-revenue conversion while minimizing customer acquisition cost and regulatory risk using only pre-campaign information?" through four phases:
 
