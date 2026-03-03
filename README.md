@@ -15,7 +15,6 @@
 ```bash
 .
 ├── .gitignore
-├── bank_architect.ipynb
 ├── pyproject.toml
 ├── README.md
 ├── SETUP.md
@@ -28,6 +27,7 @@
 │           └── bank-additional.csv
 │
 └── src/
+    ├── bank_architect.ipynb
     ├── code.ipynb
     └── data-analysis.ipynb
 ```
