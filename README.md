@@ -10,21 +10,22 @@
 | **Stakeholder Value** | Defines how insights will be translated into actionable recommendations, tailored communication strategies for technical and non-technical stakeholders, and expected business impact. |
 | **Team Roles & Accountability** | Clarifies responsibilities, ownership of deliverables, collaboration workflow, and quality control mechanisms within Team 10. |
 
-.
+Project Root
+│
 ├── .gitignore
 ├── bank_architect.ipynb
 ├── pyproject.toml
 ├── README.md
 ├── SETUP.md
 │
-├── data
-│   └── raw
-│       └── bank-additional
+├── data/
+│   └── raw/
+│       └── bank-additional/
 │           ├── bank-additional-full.csv
 │           ├── bank-additional-names.txt
 │           └── bank-additional.csv
 │
-└── src
+└── src/
     ├── code.ipynb
     └── data-analysis.ipynb
 ## BUSINESS MOTIVATION
