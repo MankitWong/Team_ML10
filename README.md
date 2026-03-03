@@ -1,37 +1,109 @@
-# Team_ML10
+# ML Project – Team 10
 
+| Section | Description |
+|----------|-------------|
+| **Business Motivation** | Provides the strategic context of the project, including the industry background, problem definition, core business question, and justification for why solving this problem creates measurable value. |
+| **Data** | Introduces the dataset, its origin, structure, and key features. Explains variable categories, target definition, data granularity, and rationale for selecting this dataset for modeling. |
+| **Risk** | Identifies modeling, data, operational, and ethical risks (e.g., data leakage, bias, overfitting, deployment risk) and outlines mitigation strategies to ensure real-world validity and robustness. |
+| **Methods & Technologies** | Describes the analytical framework, modeling approaches, feature engineering strategy, evaluation metrics, and tools/technologies used (Python, ML libraries, visualization, etc.). |
+| **Implementation Strategy** | Explains the step-by-step analytical plan for answering the business question, including preprocessing, modeling pipeline, validation design, and performance benchmarking. |
+| **Stakeholder Value** | Defines how insights will be translated into actionable recommendations, tailored communication strategies for technical and non-technical stakeholders, and expected business impact. |
+| **Team Roles & Accountability** | Clarifies responsibilities, ownership of deliverables, collaboration workflow, and quality control mechanisms within Team 10. |
+
+# 📁 Project Structure
+
+```bash
+.
+├── .gitignore
+├── bank_architect.ipynb
+├── pyproject.toml
+├── README.md
+├── SETUP.md
+│
+├── data/
+│   └── raw/
+│       └── bank-additional/
+│           ├── bank-additional-full.csv
+│           ├── bank-additional-names.txt
+│           └── bank-additional.csv
+│
+└── src/
+    ├── code.ipynb
+    └── data-analysis.ipynb
+```
 ## BUSINESS MOTIVATION
 
 ### THE PROBLEM
 
-Banks face a structural problem: term deposits are low‑margin products requiring high‑touch sales. The current approach burns resources on inevitable rejections. We chose this question because it forces three disciplines.
+Banks offer term deposits, fixed-term investment products where clients lock their funds for a guaranteed interest rate. While low-risk for customers, these products are low-margin for banks and rely heavily on high-touch sales strategies, primarily telemarketing.However the conversion rates hover below 10% meaning the approach burns resources on inevitable rejections.We therefore aim to answer the strategic question:
+
+### BUSINESS QUESTION
+
+**How can we increase subscription rates to term deposits while reducing telemarketing costs?**
+
+### MOTIVATION
+
+Our motivation forces three disciplines:
 
 **Revenue operations:** focus labor where probability justifies cost.<br>**Risk management:** prove decisions are explainable and fair before regulators demand it.<br>**Data science:** build models that work in production, not just in training  
 
-Telemarketing remains a primary channel to reach out to clients for term deposit acquisition, but conversion rates hover below 10%. The traditional approach to just call everyone generates three critical failures:
+This is while The traditional approach to just call everyone generates two critical failures:
 
-- **Economic waste:** high‑volume telemarketing campaigns represent substantial operational cost with minimal yield  
-- **Brand erosion:** repeated unwanted contact hurts customer lifetime value  
-- **Regulatory exposure:** OSFI Guideline E‑23 (May 2027) mandates explainable, bias‑free AI  
-- **Deployment risk:** Our dataset mixes pre‑campaign features (available before dialing) and post‑campaign outcomes (only known after contact). Models trained on both learn patterns they cannot access in production. We exclude post‑campaign data to ensure the model predicts from the same information a salesperson has when deciding whom to call.  
+- **Economic waste:** high‑volume telemarketing campaigns represent substantial operational cost with minimal yield.  
+- **Brand erosion:** repeated unwanted contact hurts customer lifetime value.  
 
-### THE OPPORTUNITY
 
-Four‑layer system to create a profit‑driven system:
+## DATASET
 
-1. **Persona Discovery:** K‑Means segmentation, identify 4 micro‑demographics with differentiated propensity  
-2. **Regime Stress Testing:** Random Forest + macro features, detect when Euribor > 3 % degrades reliability, adapt thresholds  
-3. **Strategy Layer:** routing by model score – high probability leads to sales calls, medium probability to marketing nurture before contact, low probability to other products  
-4. **Governance:** SHAP explainability and fairness audit, E‑23 compliance with documented suitability defense  
+The dataset used in this project is the Bank Marketing Dataset, a structured collection of client‑level, economic, and campaign‑interaction variables designed to support predictive modeling of term‑deposit subscription outcomes [http://archive.ics.uci.edu/ml/datasets/Bank+Marketing](http://archive.ics.uci.edu/ml/datasets/Bank+Marketing)
 
-### SUCCESS METRICS
+### Core Characteristics  
 
-- **Model reliability:** AUC ≥ 80 % across economic regimes  
-- **Operational efficiency:** 60 % reduction in wasted sales calls  
-- **Revenue impact:** value from single campaign cohort through less calls and higher conversion rate  
-- **Risk posture:** zero proxy bias findings in automated audit  
+- **Target variable:**  (yes/no subscription outcome)  
 
-#### PRE‑CAMPAIGN VS POST‑CAMPAIGN  
+- **Feature types:**  
+
+  - Categorical variables describing personal and campaign attributes.  
+  - Numeric variables representing call metrics and macroeconomic indicators.  
+
+- **Structure:** Tabular, with consistent formatting and no nested or unstructured fields.  
+
+- **Source:** Bank marketing campaigns conducted over multiple periods.  
+
+### Why This Dataset Was Selected  
+
+- Rich mix of categorical and numeric features enables testing preprocessing pipelines such as one‑hot encoding and passthrough numeric handling.  
+
+- Real‑world marketing context provides meaningful patterns for model interpretation and feature importance analysis.  
+
+- Balanced complexity makes it appropriate for tree‑based models, logistic regression, and more advanced pipelines.  
+
+- Includes known leakage‑prone variables, allowing exploration of model robustness and ethical modeling considerations.  
+
+- Economic indicators add temporal and macroeconomic depth not found in typical customer datasets.  
+
+### Feature Groups  
+
+- **Demographics:** age, job, marital status, education  
+- **Financial status:** housing loan, personal loan, default history  
+- **Campaign interactions:** contact type, month, day of week, duration, campaign count, previous contacts  
+- **Historical outcomes:** outcome  
+- **Macroeconomic context:** employment variation rate, consumer price index, consumer confidence index, Euribor rate, number of employees  
+
+### Suitability for Machine Learning  
+
+- Supports binary classification with interpretable outputs.  
+- Works well with Random Forests, Gradient Boosting, and logistic models.  
+- Provides enough dimensionality for feature importance, SHAP analysis, and pipeline experimentation.  
+- Clean structure reduces preprocessing overhead while still offering meaningful complexity.
+
+## RISK
+
+Dataset contains a structural modeling risk may causing information leakage, it mixes the pre-campaign and post-campaign information. If a model is trained on both categories, it will learn patterns that are not available at decision time, creating unrealistic performance and production failure risk.
+
+To ensure real-world validity, we exclude all post-campaign variables and train the model only on information available at the moment a salesperson decides whom to call. We categorized our features as follow:
+
+### PRE‑CAMPAIGN VS POST‑CAMPAIGN  
 
 | **Pre‑campaign features** (what we know before dialing) | **Post‑campaign features** (what we learn only after contact) |
 |----------------------------------------------------------|---------------------------------------------------------------|
@@ -42,78 +114,7 @@ Four‑layer system to create a profit‑driven system:
 
 **Our constraint: Delete duration.** Delete any feature created during or after the campaign. Build from pre‑campaign information only. This sacrifices training accuracy for deployment reliability.  
 
-
-
-### STAKEHOLDER VALUE
-
-#### Chief Distribution Officer  
-
-- **Priority:** revenue per headcount hour  
-- **Why they care:** fixed sales team, productivity targets, bonus tied to team output  
-- **What they get:** sales cockpit with waterfall plots, top‑3 talking points per lead  
-
-#### Chief Risk Officer  
-
-- **Priority:** audit readiness, personal liability protection  
-- **Why they care:** E‑23 enforcement May 2027, career risk, board accountability  
-- **What they get:** SHAP‑based adverse action notices, automated bias monitoring  
-
-#### Chief Marketing Officer  
-
-- **Priority:** CAC reduction, brand health  
-- **Why they care:** CAC is their KPI, churn hurts retention metrics, complaints damage brand  
-- **What they get:** automated lead triage, thousands of low‑propensity leads routed to email or other products instead of expensive outbound calls  
-
-# Dataset Selection Summary  
-
-The dataset used in this project is the Bank Marketing Dataset, a structured collection of client‑level, economic, and campaign‑interaction variables designed to support predictive modeling of term‑deposit subscription outcomes. Its composition makes it well‑suited for classification tasks, especially those involving mixed data types and real‑world marketing behavior. [http://archive.ics.uci.edu/ml/datasets/Bank+Marketing](http://archive.ics.uci.edu/ml/datasets/Bank+Marketing)
-
-## Purpose of the Dataset  
-
-The dataset captures how demographic attributes, financial indicators, and past campaign interactions influence a client’s likelihood of subscribing to a term deposit. This combination allows for both behavioral and economic signal extraction, making it a strong foundation for supervised learning.  
-
-## Core Characteristics  
-
-- **Target variable:**  (yes/no subscription outcome)  
-
-- **Feature types:**  
-
-  - Categorical variables describing personal and campaign attributes  
-  - Numeric variables representing call metrics and macroeconomic indicators  
-
-- **Structure:** Tabular, with consistent formatting and no nested or unstructured fields  
-
-- **Source:** Bank marketing campaigns conducted over multiple periods  
-
-## Why This Dataset Was Selected  
-
-- Rich mix of categorical and numeric features enables testing preprocessing pipelines such as one‑hot encoding and passthrough numeric handling.  
-
-- Real‑world marketing context provides meaningful patterns for model interpretation and feature importance analysis.  
-
-- Balanced complexity makes it appropriate for tree‑based models, logistic regression, and more advanced pipelines.  
-
-- Includes known leakage‑prone variables (e.g., ), allowing exploration of model robustness and ethical modeling considerations.  
-
-- Economic indicators (e.g., , ) add temporal and macroeconomic depth not found in typical customer datasets.  
-
-## Feature Groups  
-
-- **Demographics:** age, job, marital status, education  
-- **Financial status:** housing loan, personal loan, default history  
-- **Campaign interactions:** contact type, month, day of week, duration, campaign count, previous contacts  
-- **Historical outcomes:** outcome  
-- **Macroeconomic context:** employment variation rate, consumer price index, consumer confidence index, Euribor rate, number of employees  
-
-## Suitability for Machine Learning  
-
-- Supports binary classification with interpretable outputs.  
-- Works well with Random Forests, Gradient Boosting, and logistic models.  
-- Provides enough dimensionality for feature importance, SHAP analysis, and pipeline experimentation.  
-- Clean structure reduces preprocessing overhead while still offering meaningful complexity.
-
-
-## Risks And Uncertainties  
+### Other Risks And Uncertainties  
 
 The analysis of this dataset is subject to several risks and uncertainties:
 
@@ -132,11 +133,7 @@ The analysis of this dataset is subject to several risks and uncertainties:
 5. **Temporal and Economic Bias:**  
    The data was collected from a Portuguese banking institution between 2008 and 2010, a period encompassing two major financial crises: the collapse of Lehman Brothers and the eurozone sovereign debt crisis. This time frame introduces temporal and economic bias, as customer responses to campaigning during this unstable period may differ significantly from those in a normal market.  
 
-
-
-
-
-## Methods and Technologies
+## METHOD AND TECHNOLOGIES
 
 ### Methods
 - Explore data: client info, finances, past campaigns, and economic factors.  
@@ -149,20 +146,21 @@ The analysis of this dataset is subject to several risks and uncertainties:
 - Create visualizations and dashboards for insights.  
 
 ### Technologies
-- Python: pandas, numpy, matßplotlib, seaborn, scikit-learn  
-- Jupyter Notebook for workflow  
-- GitHub for version control  
-- Markdown for documentation  
-- SQL for structured queries if needed  
-- Visualization app for dashboards and interactive charts  
+- Python: pandas, numpy, matßplotlib, seaborn, scikit-learn
+- [Orange](https://orangedatamining.com/) for visualization, interactive dashboards and charts  
+- Jupyter Notebook for workflow and markdowns 
+- GitHub for version control      
 
-## **HOW WE WILL ANSWER THE BUSINESS QUESTION**
 
-We will answer "How can we optimize lead-to-revenue conversion while minimizing customer acquisition cost and regulatory risk using only pre-campaign information?" through four phases:
+## IMPLEMENTATION STRATEGY
+
+We will answer "**How can we increase subscription rates to term deposits while reducing telemarketing costs?**" using pre-campaign analysis through four phases:
 
 **PHASE 1: UNDERSTAND THE DATA**
 
-- Frequency versus ratio analysis: identify which segments look attractive by conversion rate but lack volume to scale
+We used some statistical methods to analyze and learn the data before moving forward with model development.
+
+- Frequency versus ratio analysis: identify how ratio versus frequency matters to identify the segments look attractive by conversion rate but lack volume to scale(e.g high frequency of admin job in dataset due to receiving higher volume of call while extracting the ratio showed us job category of 'student' had higher conversion rate while reciving less colum of call)
 - Demographic deep dive: age, job, marital status, education patterns
 - Financial profile: existing loans, housing status, default history
 - Interaction history: prior campaigns, contact fatigue, channel preferences
@@ -218,11 +216,30 @@ A production-ready model with:
 
 
 
+## STAKEHOLDER VALUE
+
+### Chief Distribution Officer  
+
+- **Priority:** revenue per headcount hour  
+- **Why they care:** fixed sales team, productivity targets, bonus tied to team output  
+- **What they get:** sales cockpit with waterfall plots, top‑3 talking points per lead  
+
+### Chief Risk Officer  
+
+- **Priority:** audit readiness, personal liability protection  
+- **Why they care:** E‑23 enforcement May 2027, career risk, board accountability  
+- **What they get:** SHAP‑based adverse action notices, automated bias monitoring  
+
+### Chief Marketing Officer  
+
+- **Priority:** CAC reduction, brand health  
+- **Why they care:** CAC is their KPI, churn hurts retention metrics, complaints damage brand  
+- **What they get:** automated lead triage, thousands of low‑propensity leads routed to email or other products instead of expensive outbound calls  
 
 
 ***
 
-### 5. TEAM ROLES & ACCOUNTABILITY
+## TEAM ROLES & ACCOUNTABILITY
 To ensure efficient execution and satisfy course requirements, we have divided the project into five distinct functional roles. *Note: Every member is required to create, review, and merge at least one independent Pull Request (PR) during the execution phase.*
 
 *   **[Sean Brennan] – Business Strategy & Governance**
