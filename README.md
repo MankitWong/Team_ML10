@@ -1,14 +1,10 @@
-# Team_ML10
-
-
-
 # ML Project – Team 10
 
 | Section | Description |
 |----------|-------------|
 | **Business Motivation** | Provides the strategic context of the project, including the industry background, problem definition, core business question, and justification for why solving this problem creates measurable value. |
 | **Data** | Introduces the dataset, its origin, structure, and key features. Explains variable categories, target definition, data granularity, and rationale for selecting this dataset for modeling. |
-| **Risk ** | Identifies modeling, data, operational, and ethical risks (e.g., data leakage, bias, overfitting, deployment risk) and outlines mitigation strategies to ensure real-world validity and robustness. |
+| **Risk** | Identifies modeling, data, operational, and ethical risks (e.g., data leakage, bias, overfitting, deployment risk) and outlines mitigation strategies to ensure real-world validity and robustness. |
 | **Methods & Technologies** | Describes the analytical framework, modeling approaches, feature engineering strategy, evaluation metrics, and tools/technologies used (Python, ML libraries, visualization, etc.). |
 | **Implementation Strategy** | Explains the step-by-step analytical plan for answering the business question, including preprocessing, modeling pipeline, validation design, and performance benchmarking. |
 | **Stakeholder Value** | Defines how insights will be translated into actionable recommendations, tailored communication strategies for technical and non-technical stakeholders, and expected business impact. |
@@ -17,7 +13,7 @@
 
 ### THE PROBLEM
 
-Banks offer term deposits—fixed-term investment products where clients lock their funds for a guaranteed interest rate. While low-risk for customers, these products are low-margin for banks and rely heavily on high-touch sales strategies, primarily telemarketing.However the conversion rates hover below 10% meaning the approach burns resources on inevitable rejections.We therefore aim to answer the strategic question:
+Banks offer term deposits, fixed-term investment products where clients lock their funds for a guaranteed interest rate. While low-risk for customers, these products are low-margin for banks and rely heavily on high-touch sales strategies, primarily telemarketing.However the conversion rates hover below 10% meaning the approach burns resources on inevitable rejections.We therefore aim to answer the strategic question:
 
 ### BUSINESS QUESTION
 
@@ -29,10 +25,10 @@ Our motivation forces three disciplines:
 
 **Revenue operations:** focus labor where probability justifies cost.<br>**Risk management:** prove decisions are explainable and fair before regulators demand it.<br>**Data science:** build models that work in production, not just in training  
 
-This is while The traditional approach to just call everyone generates three critical failures:
+This is while The traditional approach to just call everyone generates two critical failures:
 
-- **Economic waste:** high‑volume telemarketing campaigns represent substantial operational cost with minimal yield  
-- **Brand erosion:** repeated unwanted contact hurts customer lifetime value  
+- **Economic waste:** high‑volume telemarketing campaigns represent substantial operational cost with minimal yield.  
+- **Brand erosion:** repeated unwanted contact hurts customer lifetime value.  
 
 
 ## DATASET
@@ -45,12 +41,12 @@ The dataset used in this project is the Bank Marketing Dataset, a structured col
 
 - **Feature types:**  
 
-  - Categorical variables describing personal and campaign attributes  
-  - Numeric variables representing call metrics and macroeconomic indicators  
+  - Categorical variables describing personal and campaign attributes.  
+  - Numeric variables representing call metrics and macroeconomic indicators.  
 
-- **Structure:** Tabular, with consistent formatting and no nested or unstructured fields  
+- **Structure:** Tabular, with consistent formatting and no nested or unstructured fields.  
 
-- **Source:** Bank marketing campaigns conducted over multiple periods  
+- **Source:** Bank marketing campaigns conducted over multiple periods.  
 
 ### Why This Dataset Was Selected  
 
@@ -60,9 +56,9 @@ The dataset used in this project is the Bank Marketing Dataset, a structured col
 
 - Balanced complexity makes it appropriate for tree‑based models, logistic regression, and more advanced pipelines.  
 
-- Includes known leakage‑prone variables (e.g., ), allowing exploration of model robustness and ethical modeling considerations.  
+- Includes known leakage‑prone variables, allowing exploration of model robustness and ethical modeling considerations.  
 
-- Economic indicators (e.g., , ) add temporal and macroeconomic depth not found in typical customer datasets.  
+- Economic indicators add temporal and macroeconomic depth not found in typical customer datasets.  
 
 ### Feature Groups  
 
@@ -128,20 +124,21 @@ The analysis of this dataset is subject to several risks and uncertainties:
 - Create visualizations and dashboards for insights.  
 
 ### Technologies
-- Python: pandas, numpy, matßplotlib, seaborn, scikit-learn  
-- Jupyter Notebook for workflow  
-- GitHub for version control  
-- Markdown for documentation  
-- SQL for structured queries if needed  
-- Visualization app for dashboards and interactive charts  
+- Python: pandas, numpy, matßplotlib, seaborn, scikit-learn
+- [Orange](https://orangedatamining.com/) for visualization, interactive dashboards and charts  
+- Jupyter Notebook for workflow and markdowns 
+- GitHub for version control      
+
 
 ## IMPLEMENTATION STRATEGY
 
-We will answer "How can we optimize lead-to-revenue conversion while minimizing customer acquisition cost and regulatory risk using only pre-campaign information?" through four phases:
+We will answer "**How can we increase subscription rates to term deposits while reducing telemarketing costs?**" using pre-campaign analysis through four phases:
 
 **PHASE 1: UNDERSTAND THE DATA**
 
-- Frequency versus ratio analysis: identify which segments look attractive by conversion rate but lack volume to scale
+We used some statistical methods to analyze and learn the data before moving forward with model development.
+
+- Frequency versus ratio analysis: identify how ratio versus frequency matters to identify the segments look attractive by conversion rate but lack volume to scale(e.g high frequency of admin job in dataset due to receiving higher volume of call while extracting the ratio showed us job category of 'student' had higher conversion rate while reciving less colum of call)
 - Demographic deep dive: age, job, marital status, education patterns
 - Financial profile: existing loans, housing status, default history
 - Interaction history: prior campaigns, contact fatigue, channel preferences
