@@ -1,0 +1,7 @@
+README.md
+pyproject.toml
+Team_ML_10.egg-info/PKG-INFO
+Team_ML_10.egg-info/SOURCES.txt
+Team_ML_10.egg-info/dependency_links.txt
+Team_ML_10.egg-info/requires.txt
+Team_ML_10.egg-info/top_level.txt

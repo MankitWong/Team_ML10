@@ -1,0 +1,17 @@
+Metadata-Version: 2.4
+Name: Team_ML_10
+Version: 1.0.0
+Summary: Bank Marketing E-23 Compliance Analysis
+Author: Team_ML_10
+License-Expression: MIT
+Requires-Python: >=3.11
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: scikit-learn
+Requires-Dist: xgboost
+Requires-Dist: shap
+Requires-Dist: ipywidgets
+Requires-Dist: ipykernel
+Requires-Dist: jupyter
+Requires-Dist: seaborn
