@@ -27,8 +27,7 @@
 │           └── bank-additional.csv
 │
 └── src/
-    ├── bank_architect.ipynb
-    ├── code.ipynb
+    ├── main.ipynb
     └── data-analysis.ipynb
 ```
 ## BUSINESS MOTIVATION
