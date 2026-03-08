@@ -273,7 +273,7 @@ To ensure efficient execution and satisfy course requirements, we have divided t
 *** 
 
 ## Credits and Personal Links
-* [Sean Brennan](#)
+* [Sean Brennan](https://drive.google.com/file/d/1xTUQjWs94MWE0gM1yqq5Q084nvzp34Zo/view?usp=sharing)
 * [Armita Kharmandar](#)
 * [Man Kit Wong](https://drive.google.com/file/d/18DNRj-pAzUH8VdX5Sw5lgF4EV13gVF3Y/view?usp=share_link)
 * [Jesse Segura](https://www.youtube.com/watch?v=qrllMGGGlOA)
