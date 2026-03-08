@@ -35,10 +35,10 @@
 ├── extra/
 │   └── initial_data_analysis.pptx
 │
-|
+│
 ├── reports/
 │   └── Bank_Campaign_Presentation_F.pptx
-|
+│
 └── src/
     ├── main.ipynb
     └── data-analysis.ipynb
