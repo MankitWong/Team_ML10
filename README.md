@@ -37,7 +37,7 @@
 │
 │
 ├── reports/
-│   └── Bank_Campaign_Presentation_F.pptx
+│   └── Bank_Campaign_Presentation.pptx
 │
 └── src/
     ├── main.ipynb
