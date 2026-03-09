@@ -40,8 +40,7 @@
 │   └── Bank_Campaign_Presentation_F.pptx
 │
 └── src/
-    ├── bank_architect.ipynb
-    ├── code.ipynb
+    ├── main.ipynb
     └── data-analysis.ipynb
 ```
 ## BUSINESS MOTIVATION
